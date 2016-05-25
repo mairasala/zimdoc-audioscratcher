@@ -35,6 +35,16 @@ module.exports = (grunt)->
         cwd: 'src/'
         src: ['*.html']
         dest: 'www/'
+    'http-server':
+      dev:
+        root: 'www/'
+        port: 8080
+        host: '0.0.0.0'
+        showDir: true
+        autoIndex: true
+        ext: 'html'
+        runINBackground: true
+        openBrowser: false
 
   
   grunt.loadNpmTasks 'grunt-bower-task'
@@ -44,4 +54,6 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-http-server'
   grunt.registerTask 'default',['bower:install','copy','coffee','concat','browserify:vendors','watch']
+  grunt.registerTask 'jsfiles',['coffee','concat','browserify:vendors']
